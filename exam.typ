@@ -158,8 +158,8 @@
 
 // Блок для Теорем и Доказательств (светло-синий)
 #let thm(name, body) = block(
-  fill: rgb("e8f4f8"),
-  stroke: (left: 3pt + rgb("339af0")),
+  fill: rgb("#f3e8f8"),
+  stroke: (left: 3pt + rgb("#9b33f0")),
   inset: 10pt,
   radius: (right: 4pt),
   width: 100%,
