@@ -744,14 +744,14 @@ $ A_1 times A_2 times ... times A_n = { (a_1, a_2, ..., a_n) | a_i in A_i, foral
 Операция прямого произведения множеств обладает следующими алгебраическими свойствами:
 
 1. *Некоммутативность:* в общем случае (если множества $A$ и $B$ непустые и $A != B$):
-   $ A times B != B times A $
+  $ A times B != B times A $
 2. *Дистрибутивность относительно объединения:*
-   $ A times (B union C) = (A times B) union (A times C) $
+  $ A times (B union C) = (A times B) union (A times C) $
 3. *Дистрибутивность относительно пересечения:*
-   $ A times (B inter C) = (A times B) inter (A times C) $
+  $ A times (B inter C) = (A times B) inter (A times C) $
 4. *Свойство пустого множества (свойство нуля):*
-   $ A times emptyset = emptyset times A = emptyset $
-   Это логично, так как невозможно составить пару, если из пустого множества нельзя выбрать ни одного элемента.
+  $ A times emptyset = emptyset times A = emptyset $
+  Это логично, так как невозможно составить пару, если из пустого множества нельзя выбрать ни одного элемента.
 
 
 *Геометрическая интерпретация*
@@ -771,45 +771,507 @@ $ A times B = { (x, y) : x in A, y in B } $
     height: 150pt,
     {
       // Shaded area A x B
-      place(top + left, dx: 70pt, dy: 40pt,
-        rect(width: 80pt, height: 60pt, fill: rgb("1c7ed6").lighten(90%), stroke: 1pt + rgb("1c7ed6"))
-      )
-      
+      place(top + left, dx: 70pt, dy: 40pt, rect(
+        width: 80pt,
+        height: 60pt,
+        fill: rgb("1c7ed6").lighten(90%),
+        stroke: 1pt + rgb("1c7ed6"),
+      ))
+
       // Dashed lines to axes
-      place(top + left, dx: 70pt, dy: 100pt, line(start: (0pt, 0pt), end: (0pt, 20pt), stroke: (paint: luma(100), dash: "dashed", thickness: 0.5pt)))
-      place(top + left, dx: 150pt, dy: 100pt, line(start: (0pt, 0pt), end: (0pt, 20pt), stroke: (paint: luma(100), dash: "dashed", thickness: 0.5pt)))
-      place(top + left, dx: 40pt, dy: 100pt, line(start: (0pt, 0pt), end: (30pt, 0pt), stroke: (paint: luma(100), dash: "dashed", thickness: 0.5pt)))
-      place(top + left, dx: 40pt, dy: 40pt, line(start: (0pt, 0pt), end: (30pt, 0pt), stroke: (paint: luma(100), dash: "dashed", thickness: 0.5pt)))
+      place(top + left, dx: 70pt, dy: 100pt, line(start: (0pt, 0pt), end: (0pt, 20pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 150pt, dy: 100pt, line(start: (0pt, 0pt), end: (0pt, 20pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 40pt, dy: 100pt, line(start: (0pt, 0pt), end: (30pt, 0pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 40pt, dy: 40pt, line(start: (0pt, 0pt), end: (30pt, 0pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
 
       // Axes
       place(top + left, dx: 30pt, dy: 120pt, line(start: (0pt, 0pt), end: (160pt, 0pt), stroke: 0.8pt))
       place(top + left, dx: 185pt, dy: 115pt, [$arrow.r$])
       place(top + left, dx: 40pt, dy: 20pt, line(start: (0pt, 110pt), end: (0pt, 0pt), stroke: 0.8pt))
       place(top + left, dx: 37.3pt, dy: 10.5pt, [$arrow.t$])
-      
+
       // Labels on axes
       place(top + left, dx: 67pt, dy: 123pt, [$a$])
       place(top + left, dx: 147pt, dy: 123pt, [$b$])
       place(top + left, dx: 25pt, dy: 92pt, [$c$])
       place(top + left, dx: 25pt, dy: 32pt, [$d$])
-      
+
       place(top + left, dx: 195pt, dy: 123pt, [$x$])
       place(top + left, dx: 37pt, dy: -2pt, [$y$])
-      
+
       // Label A x B
       place(top + left, dx: 95pt, dy: 60pt, [$A times B$])
-    }
+    },
   )
 ]
 
 
 == 17. Отображения и соответствия. Инъективное, сюръективное, биективное отображения. Обратное соответствие. Сечение соответствия.
 
-_Ожидает заполнения._
+#def(
+  "Отображение",
+)[Отображение $f$ из множества $A$ в множество $B$ $ f : A -> B $ задано, если каждому элементу $x in A$ сопоставлен элемент $y in B$. \ $y$ назвают образом элемента $x$ при отображении $f$.]
+
+
+#def(
+  "График отображения",
+)[Каждое отображение f однозначно задает множество упорядоченных пар таких, что $ {(x,y) : x in A, y = f(x)} subset.eq A times B $ это множество упорядоченных пар принято называть *графиком отображения* $f$.]
+
+
+#align(center)[*Виды отображений*]
+
+1. *Отображение $f$ из мн-ва $A$ в мн-во $B$ наз-ся инъективным (инъекцией)*, если для каждого элемента $y$ из обл-ти значений отображения $f$ сущ-ет единственный прообраз.
+  $ y_1 = f(x_1), y_2 = f(x_2); quad y_1 = y_2 => x_1 = x_2 = x. $
+
+#align(center)[
+  #block(
+    width: 250pt,
+    height: 150pt,
+    {
+      // Dashed lines to axes
+      place(top + left, dx: 70pt, dy: 100pt, line(start: (0pt, 0pt), end: (0pt, 20pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 150pt, dy: 100pt, line(start: (0pt, 0pt), end: (0pt, 20pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 40pt, dy: 100pt, line(start: (0pt, 0pt), end: (30pt, 0pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 40pt, dy: 40pt, line(start: (0pt, 0pt), end: (30pt, 0pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+
+      // Axes
+      place(top + left, dx: 30pt, dy: 120pt, line(start: (0pt, 0pt), end: (160pt, 0pt), stroke: 0.8pt))
+      place(top + left, dx: 185pt, dy: 115pt, [$x$])
+      place(top + left, dx: 40pt, dy: 20pt, line(start: (0pt, 110pt), end: (0pt, 0pt), stroke: 0.8pt))
+      place(top + left, dx: 25pt, dy: 10.5pt, [$y$])
+
+      // Label B on Y
+      place(top + left, dx: 25pt, dy: 65pt, [$B$])
+
+      // Rectangle A x B borders (dashed)
+      place(top + left, dx: 70pt, dy: 40pt, line(start: (0pt, 0pt), end: (80pt, 0pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 70pt, dy: 100pt, line(start: (0pt, 0pt), end: (80pt, 0pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 70pt, dy: 40pt, line(start: (0pt, 0pt), end: (0pt, 60pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 150pt, dy: 40pt, line(start: (0pt, 0pt), end: (0pt, 60pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+
+      // Functions f1 and f2
+      place(top + left, dx: 70pt, dy: 80pt, line(start: (0pt, 0pt), end: (80pt, -30pt), stroke: (
+        paint: rgb("1c7ed6"),
+        thickness: 1.5pt,
+      )))
+      place(top + left, dx: 110pt, dy: 100pt, line(start: (0pt, 0pt), end: (40pt, -50pt), stroke: (
+        paint: rgb("d6336c"),
+        thickness: 1.5pt,
+      )))
+
+      // Labels for f1 and f2
+      place(top + left, dx: 115pt, dy: 45pt, [$f_1$])
+      place(top + left, dx: 135pt, dy: 75pt, [$f_2$])
+
+      place(top + left, dx: 170pt, dy: 65pt, [$f_1$ и $f_2$ --- инъекции])
+    },
+  )
+]
+
+#align(center)[#image("dp/17.1.png", width: 60%)]
+
+2. *Отображение $f$ из мн-ва $A$ в мн-во $B$ называется сюръективным (сюръекцией)*, если его множество значений совпадает с мн-вом $B$. \
+  (отображение $A$ на мн-во $B$)
+
+#align(center)[
+  #block(
+    width: 250pt,
+    height: 150pt,
+    {
+      // Dashed lines to axes
+      place(top + left, dx: 70pt, dy: 100pt, line(start: (0pt, 0pt), end: (0pt, 20pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 150pt, dy: 100pt, line(start: (0pt, 0pt), end: (0pt, 20pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 40pt, dy: 100pt, line(start: (0pt, 0pt), end: (30pt, 0pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 40pt, dy: 40pt, line(start: (0pt, 0pt), end: (30pt, 0pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+
+      // Axes
+      place(top + left, dx: 30pt, dy: 120pt, line(start: (0pt, 0pt), end: (160pt, 0pt), stroke: 0.8pt))
+      place(top + left, dx: 185pt, dy: 115pt, [$x$])
+      place(top + left, dx: 40pt, dy: 20pt, line(start: (0pt, 110pt), end: (0pt, 0pt), stroke: 0.8pt))
+      place(top + left, dx: 25pt, dy: 10.5pt, [$y$])
+
+      // Labels A and B
+      place(top + left, dx: 105pt, dy: 125pt, [$A$])
+      place(top + left, dx: 25pt, dy: 65pt, [$B$])
+
+      // Rectangle A x B borders (solid for surjection box)
+      place(top + left, dx: 70pt, dy: 40pt, rect(width: 80pt, height: 60pt, stroke: 1.2pt + luma(50), radius: 3pt))
+
+      // Surjective curves (paths)
+      // Path 1: Top-left to Bottom-right
+      place(top + left, dx: 70pt, dy: 40pt, path(
+        stroke: 1.5pt + rgb("1c7ed6"),
+        (10pt, 0pt),
+        ((40pt, 30pt), (-10pt, -10pt), (10pt, 10pt)),
+        (70pt, 60pt),
+      ))
+      // Path 2: Bottom-center to Top-right
+      place(top + left, dx: 70pt, dy: 40pt, path(
+        stroke: 1.5pt + rgb("d6336c"),
+        (35pt, 60pt),
+        ((50pt, 30pt), (-5pt, 15pt), (5pt, -15pt)),
+        (75pt, 0pt),
+      ))
+    },
+  )
+]
+
+#align(center)[#image("dp/17.2.png", width: 60%)]
+
+3. *Отображение $f$ из мн-ва $A$ в мн-во $B$ называется биективным (биекцией)*, если оно одновременно и инъективно, и сюръективно.
+
+#align(center)[
+  #block(
+    width: 250pt,
+    height: 150pt,
+    {
+      // Dashed lines to axes
+      place(top + left, dx: 70pt, dy: 100pt, line(start: (0pt, 0pt), end: (0pt, 20pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 150pt, dy: 100pt, line(start: (0pt, 0pt), end: (0pt, 20pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 40pt, dy: 100pt, line(start: (0pt, 0pt), end: (30pt, 0pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+      place(top + left, dx: 40pt, dy: 40pt, line(start: (0pt, 0pt), end: (30pt, 0pt), stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+
+      // Axes
+      place(top + left, dx: 30pt, dy: 120pt, line(start: (0pt, 0pt), end: (160pt, 0pt), stroke: 0.8pt))
+      place(top + left, dx: 185pt, dy: 115pt, [$x$])
+      place(top + left, dx: 40pt, dy: 20pt, line(start: (0pt, 110pt), end: (0pt, 0pt), stroke: 0.8pt))
+      place(top + left, dx: 25pt, dy: 10.5pt, [$y$])
+
+      // Labels A and B
+      place(top + left, dx: 105pt, dy: 125pt, [$A$])
+      place(top + left, dx: 25pt, dy: 65pt, [$B$])
+
+      // Rectangle A x B borders (dashed)
+      place(top + left, dx: 70pt, dy: 40pt, rect(width: 80pt, height: 60pt, stroke: (
+        paint: luma(100),
+        dash: "dashed",
+        thickness: 0.5pt,
+      )))
+
+      // Bijective curve
+      place(top + left, dx: 70pt, dy: 40pt, path(
+        stroke: 1.5pt + rgb("1c7ed6"),
+        (0pt, 60pt),
+        ((40pt, 30pt), (-10pt, 10pt), (10pt, -10pt)),
+        (80pt, 0pt),
+      ))
+
+      place(top + left, dx: 115pt, dy: 50pt, [$f_3$])
+    },
+  )
+]
+#align(center)[#image("dp/17.3.png", width: 60%)]
+
+#def("Область определения")[
+  Областью определения соответствия $rho$ называется множество всех первых компонентов упорядоченных пар, составляющих $rho$.
+  $ D e f(rho) = {x : exists y in B " и " (x; y) in rho} $
+]
+
+#def("Область значений")[
+  Областью значений соответствия $rho$ называют множество всех вторых компонентов упорядоченных пар, составляющих $rho$.
+  $ R e s(rho) = {y : exists x in A " и " (x; y) in rho} $
+]
+
+#def("Сечение соответствия по элементу")[
+  Сечением соответствия $rho$ по элементу $x_0 in A$ называют множество $rho(x_0)$, состоящее из тех вторых компонентов упорядоченных пар соответствия, таких, что первым компонентом является $x_0$.
+  $ rho(x_0) = {y : (x_0; y) in rho} $
+]
+
+#def("Сечение соответствия по множеству")[
+  Сечением соответствия $rho$ по множеству $C$, входящему в $A$, называется множество всех вторых компонентов упорядоченных пар соответствия, таких, что первые компоненты входят в множество $C$.
+  $ C subset.eq A, quad rho(C) = {y : (x, y) in rho " и " x in C} $
+]
+
+#pagebreak()
 
 == 18. Способы задания соответствий. Бинарные отношения. Способы задания бинарных отношений.
 
-_Ожидает заполнения._
+#align(center)[*Способы задания соответствий*]
+*1. Перечислением*
+$ A = {1,2}; B = {a,b,c} $ #align(right)[$rho subset.eq A times B$]
+#align(right)[$rho = {(1, a), (1, c), (2, b), (2, c)};$]
+*2. Табличный:*
+
+#align(center)[
+  #table(
+    columns: (auto, 1fr, 1fr, 1fr),
+    align: center + horizon,
+    stroke: 0.5pt + luma(200),
+    fill: (col, row) => if col == 0 { rgb("f1f3f5") } else { none },
+    [$D e f(R)$], [$a_1$], [$a_2$], [$a_3$],
+    [$R(D e f(R))$], [${a_1, a_2}$], [${a_3}$], [${a_3}$],
+  )
+]
+
+#align(center)[
+  #block(
+    width: 250pt,
+    height: 120pt,
+    {
+      // Left oval representing Def(R)
+      place(top + left, dx: 30pt, dy: 10pt, rect(
+        width: 50pt,
+        height: 90pt,
+        stroke: 1pt + rgb("1c7ed6"),
+        radius: 25pt,
+        fill: rgb("1c7ed6").lighten(95%),
+      ))
+      place(top + left, dx: 32pt, dy: 105pt, [$D e f(R)$])
+
+      // Right oval representing R(Def(R))
+      place(top + left, dx: 170pt, dy: 10pt, rect(
+        width: 50pt,
+        height: 90pt,
+        stroke: 1pt + rgb("2b8a3e"),
+        radius: 25pt,
+        fill: rgb("2b8a3e").lighten(95%),
+      ))
+      place(top + left, dx: 170pt, dy: 105pt, [$R(D e f(R))$])
+
+      // Elements in Left set (a1, a2, a3)
+      place(top + left, dx: 50pt, dy: 20pt, [$a_1$])
+      place(top + left, dx: 50pt, dy: 45pt, [$a_2$])
+      place(top + left, dx: 50pt, dy: 70pt, [$a_3$])
+
+      // Elements in Right set (a1, a2, a3)
+      place(top + left, dx: 190pt, dy: 20pt, [$a_1$])
+      place(top + left, dx: 190pt, dy: 45pt, [$a_2$])
+      place(top + left, dx: 190pt, dy: 70pt, [$a_3$])
+
+      // Arrows representing the correspondence
+      // Arrow: a1 -> a1
+      place(top + left, dx: 65pt, dy: 25pt, line(start: (0pt, 0pt), end: (115pt, 0pt), stroke: 1pt + rgb("e03131")))
+      place(top + left, dx: 173pt, dy: 20.5pt, [#text(fill: rgb("e03131"), size: 9pt)[$arrow.r$]])
+
+      // Arrow: a1 -> a2
+      place(top + left, dx: 65pt, dy: 25pt, line(start: (0pt, 0pt), end: (115pt, 25pt), stroke: 1pt + rgb("e03131")))
+      place(top + left, dx: 173pt, dy: 45.5pt, [#text(fill: rgb("e03131"), size: 9pt)[$arrow.r$]])
+
+      // Arrow: a2 -> a3
+      place(top + left, dx: 65pt, dy: 50pt, line(start: (0pt, 0pt), end: (115pt, 25pt), stroke: 1pt + rgb("e03131")))
+      place(top + left, dx: 173pt, dy: 70.5pt, [#text(fill: rgb("e03131"), size: 9pt)[$arrow.r$]])
+
+      // Arrow: a3 -> a3
+      place(top + left, dx: 65pt, dy: 75pt, line(start: (0pt, 0pt), end: (115pt, 0pt), stroke: 1pt + rgb("e03131")))
+      place(top + left, dx: 173pt, dy: 70.5pt, [#text(fill: rgb("e03131"), size: 9pt)[$arrow.r$]])
+    },
+  )
+]
+
+*3. Матрица соответствия*
+
+Пусть соответствие $rho subset.eq A times B$, где $A = {a_1, a_2, ..., a_n\}$, $B = {b_1, b_2, ..., b_m}$, $|A| = n$, $|B| = m$.
+*Матрицей соответствия* (обозначается $(rho)$) называют матрицу размерности $n times m$, элементы которой $rho_(i j)$ определяются следующим образом:
+$
+  rho_(i j) = cases(
+    1 ", если " (a_i, b_j) in rho,
+    0 ", если иначе."
+  )
+$
+
+Для нашего примера $A = {1, 2}$, $B = {a, b, c}$ и $rho = {(1, a), (1, c), (2, b), (2, c)}$ матрица соответствия имеет вид:
+
+#align(center)[
+  #grid(
+    columns: (auto, auto),
+    gutter: 40pt,
+    align: center + horizon,
+    table(
+      columns: (30pt, 30pt, 30pt, 30pt),
+      align: center + horizon,
+      stroke: 0.5pt + luma(200),
+      fill: (col, row) => if col == 0 or row == 0 { rgb("f1f3f5") } else { none },
+      [], [*$a$*], [*$b$*], [*$c$*],
+      [*$1$*], [1], [], [1],
+      [*$2$*], [], [1], [1],
+    ),
+    block(
+      width: 120pt,
+      height: 100pt,
+      {
+        // Grid lines
+        // Horizontal lines (1 and 2)
+        place(top + left, dx: 20pt, dy: 30pt, line(start: (0pt, 0pt), end: (80pt, 0pt), stroke: 0.5pt + luma(180)))
+        place(top + left, dx: 20pt, dy: 60pt, line(start: (0pt, 0pt), end: (80pt, 0pt), stroke: 0.5pt + luma(180)))
+
+        // Vertical lines (a, b, c)
+        place(top + left, dx: 30pt, dy: 20pt, line(start: (0pt, 0pt), end: (0pt, 60pt), stroke: 0.5pt + luma(180)))
+        place(top + left, dx: 55pt, dy: 20pt, line(start: (0pt, 0pt), end: (0pt, 60pt), stroke: 0.5pt + luma(180)))
+        place(top + left, dx: 80pt, dy: 20pt, line(start: (0pt, 0pt), end: (0pt, 60pt), stroke: 0.5pt + luma(180)))
+
+        // Labels for axes/lines
+        place(top + left, dx: 8pt, dy: 23pt, [$1$])
+        place(top + left, dx: 8pt, dy: 53pt, [$2$])
+        place(top + left, dx: 5pt, dy: 89pt, [$A$])
+        place(top + left, dx: 8pt, dy: 75pt, [$arrow.t$])
+
+        place(top + left, dx: -150pt, dy: 95pt, [$A$])
+        place(top + left, dx: -148pt, dy: 81pt, [$arrow.t$])
+
+        place(top + left, dx: 26pt, dy: 5pt, [$a$])
+        place(top + left, dx: 53pt, dy: 5pt, [$b$])
+        place(top + left, dx: 76pt, dy: 5pt, [$c$])
+        place(top + left, dx: 105pt, dy: 8pt, [$B$])
+        place(top + left, dx: 90pt, dy: 8pt, [$arrow.l$])
+
+        place(top + left, dx: -22pt, dy: 28pt, [$B$])
+        place(top + left, dx: -35pt, dy: 28pt, [$arrow.l$])
+
+        // Intersection points (1,a), (1,c), (2,b), (2,c)
+        place(top + left, dx: 30pt - 3pt, dy: 30pt - 3pt, circle(radius: 3pt, fill: rgb("e03131")))
+        place(top + left, dx: 80pt - 3pt, dy: 30pt - 3pt, circle(radius: 3pt, fill: rgb("e03131")))
+        place(top + left, dx: 55pt - 3pt, dy: 60pt - 3pt, circle(radius: 3pt, fill: rgb("e03131")))
+        place(top + left, dx: 80pt - 3pt, dy: 60pt - 3pt, circle(radius: 3pt, fill: rgb("e03131")))
+      },
+    ),
+  )
+]
+
+*4. Графический*
+
+Соответствие можно представить в виде ориентированного двудольного графа, где вершины первой доли соответствуют элементам множества $A$, а вершины второй доли — элементам множества $B$. Дуги графа соединяют вершины $x in A$ с их образами $y in B$.
+
+#align(center)[
+  #block(
+    width: 250pt,
+    height: 120pt,
+    {
+      // Left partition (A)
+      place(top + left, dx: 40pt, dy: 25pt, circle(radius: 5pt, fill: rgb("1c7ed6")))
+      place(top + left, dx: 22pt, dy: 23pt, [$1$])
+
+      place(top + left, dx: 40pt, dy: 75pt, circle(radius: 5pt, fill: rgb("1c7ed6")))
+      place(top + left, dx: 22pt, dy: 73pt, [$2$])
+
+      place(top + left, dx: 35pt, dy: 105pt, [$A$])
+
+      // Right partition (B)
+      place(top + left, dx: 172pt, dy: 15pt, circle(radius: 5pt, fill: rgb("2b8a3e")))
+      place(top + left, dx: 195pt, dy: 13pt, [$a$])
+
+      place(top + left, dx: 172pt, dy: 50pt, circle(radius: 5pt, fill: rgb("2b8a3e")))
+      place(top + left, dx: 195pt, dy: 48pt, [$b$])
+
+      place(top + left, dx: 172pt, dy: 85pt, circle(radius: 5pt, fill: rgb("2b8a3e")))
+      place(top + left, dx: 195pt, dy: 83pt, [$c$])
+
+      place(top + left, dx: 180pt, dy: 105pt, [$B$])
+
+      // Connecting arrows
+      // 1 -> a
+      place(top + left, dx: 45pt, dy: 30pt, line(start: (0pt, 0pt), end: (130pt, -10pt), stroke: 1.5pt + rgb("e03131")))
+      place(top + left, dx: 168pt, dy: 15.5pt, [#text(fill: rgb("e03131"), size: 9pt)[$arrow.r$]])
+
+      // 1 -> c
+      place(top + left, dx: 45pt, dy: 30pt, line(start: (0pt, 0pt), end: (130pt, 60pt), stroke: 1.5pt + rgb("e03131")))
+      place(top + left, dx: 168pt, dy: 85.5pt, [#text(fill: rgb("e03131"), size: 9pt)[$arrow.r$]])
+
+      // 2 -> b
+      place(top + left, dx: 45pt, dy: 80pt, line(start: (0pt, 0pt), end: (130pt, -25pt), stroke: 1.5pt + rgb("e03131")))
+      place(top + left, dx: 168pt, dy: 50.5pt, [#text(fill: rgb("e03131"), size: 9pt)[$arrow.r$]])
+
+      // 2 -> c
+      place(top + left, dx: 45pt, dy: 80pt, line(start: (0pt, 0pt), end: (130pt, 10pt), stroke: 1.5pt + rgb("e03131")))
+      place(top + left, dx: 168pt, dy: 85.5pt, [#text(fill: rgb("e03131"), size: 9pt)[$arrow.r$]])
+
+      // Graph label rho
+      place(top + left, dx: 110pt, dy: 105pt, [$rho$])
+    },
+  )
+]
+
+#align(center)[*Бинарные отношения*]
+
+#def("Бинарное отношение на множестве")[
+  *Бинарным отношением* на множестве $A$ называется подмножество декартового квадрата на множестве $A$ и обозначается $R subset.eq A times A = A^2$.
+  $ (x, y) in R => x R y $
+]
+
+#def("Диагональное отношение")[
+  Бинарное отношение $R$, равномощное множеству $A$, в каждой паре которого компоненты совпадают, называется *диагональным* и обозначается $i d_A$.
+  Состоит из элементов $x R x$, где $x in A$ (то есть $i d_A = {(x, x) : x in A}$).
+]
+
 
 == 19. Свойства бинарных отношений: рефлексивность, иррефлексивность, симметричность, антисимметричность, транзитивность, плотность. График отношения.
 
