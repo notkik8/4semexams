@@ -719,12 +719,88 @@ $(a,b) != (b,a)$,
 ${a,b} = {b,a}$
 
 #def("Кортеж")[
-  более общее понятие упорядоченной пары, представляет собой упорядоченный набор элементов $(a_1, a_2, ..., a_n)$, где $forall i =$ #overline[(1, n)]$: a_i in A_i$, где $n$ — длина кортежа.
+  Более общее понятие упорядоченной пары, представляющее собой упорядоченный набор элементов $(a_1, a_2, ..., a_n)$, где $forall i = overline(1 "," n): a_i in A_i$.
+
+  Число $n$ называется *длиной* (или *размерностью*) кортежа, а сам элемент $a_i$ — $i$-й *проекцией* (или *компонентой*) кортежа.
 ]
 
 
 
+#def("Декартово (прямое) произведение")[
+  Декартовым (прямым) произведением множеств $A$ и $B$ называется множество всех упорядоченных пар $(a,b)$, где первый элемент берется из множества $A$, а второй — из множества $B$.
 
+  Аналитически это записывается так:
+  $ A times B = { (a,b) | a in A, b in B } $
+]
+
+Понятие прямого произведения естественно обобщается на случай $n$ множеств $A_1, A_2, ..., A_n$. В этом случае $A_1 times ... times A_n$ понимается как множество всевозможных кортежей длины $n$ вида $(a_1, ..., a_n)$, где каждый $a_i in A_i$:
+$ A_1 times A_2 times ... times A_n = { (a_1, a_2, ..., a_n) | a_i in A_i, forall i = overline(1 "," n) } $
+
+Если все перемножаемые множества равны между собой ($A_1 = A_2 = ... = A_n = A$), то такое произведение называется *$n$-й декартовой степенью* множества $A$ и обозначается $A^n$. При $n=2$ множество $A^2 = A times A$ называется *декартовым квадратом*.
+
+
+#align(center)[*Свойства декартова произведения*]
+
+Операция прямого произведения множеств обладает следующими алгебраическими свойствами:
+
+1. *Некоммутативность:* в общем случае (если множества $A$ и $B$ непустые и $A != B$):
+   $ A times B != B times A $
+2. *Дистрибутивность относительно объединения:*
+   $ A times (B union C) = (A times B) union (A times C) $
+3. *Дистрибутивность относительно пересечения:*
+   $ A times (B inter C) = (A times B) inter (A times C) $
+4. *Свойство пустого множества (свойство нуля):*
+   $ A times emptyset = emptyset times A = emptyset $
+   Это логично, так как невозможно составить пару, если из пустого множества нельзя выбрать ни одного элемента.
+
+
+*Геометрическая интерпретация*
+
+Декартово произведение множеств $A$ и $B$ можно интерпретировать геометрически как множество точек в двумерном пространстве.
+
+Пусть:
+$ A = {x : a <= x <= b} $
+$ B = {y : c <= y <= d} $
+
+Тогда их декартово произведение представляет собой прямоугольник на плоскости:
+$ A times B = { (x, y) : x in A, y in B } $
+
+#align(center)[
+  #block(
+    width: 220pt,
+    height: 150pt,
+    {
+      // Shaded area A x B
+      place(top + left, dx: 70pt, dy: 40pt,
+        rect(width: 80pt, height: 60pt, fill: rgb("1c7ed6").lighten(90%), stroke: 1pt + rgb("1c7ed6"))
+      )
+      
+      // Dashed lines to axes
+      place(top + left, dx: 70pt, dy: 100pt, line(start: (0pt, 0pt), end: (0pt, 20pt), stroke: (paint: luma(100), dash: "dashed", thickness: 0.5pt)))
+      place(top + left, dx: 150pt, dy: 100pt, line(start: (0pt, 0pt), end: (0pt, 20pt), stroke: (paint: luma(100), dash: "dashed", thickness: 0.5pt)))
+      place(top + left, dx: 40pt, dy: 100pt, line(start: (0pt, 0pt), end: (30pt, 0pt), stroke: (paint: luma(100), dash: "dashed", thickness: 0.5pt)))
+      place(top + left, dx: 40pt, dy: 40pt, line(start: (0pt, 0pt), end: (30pt, 0pt), stroke: (paint: luma(100), dash: "dashed", thickness: 0.5pt)))
+
+      // Axes
+      place(top + left, dx: 30pt, dy: 120pt, line(start: (0pt, 0pt), end: (160pt, 0pt), stroke: 0.8pt))
+      place(top + left, dx: 185pt, dy: 115pt, [$arrow.r$])
+      place(top + left, dx: 40pt, dy: 20pt, line(start: (0pt, 110pt), end: (0pt, 0pt), stroke: 0.8pt))
+      place(top + left, dx: 37.3pt, dy: 10.5pt, [$arrow.t$])
+      
+      // Labels on axes
+      place(top + left, dx: 67pt, dy: 123pt, [$a$])
+      place(top + left, dx: 147pt, dy: 123pt, [$b$])
+      place(top + left, dx: 25pt, dy: 92pt, [$c$])
+      place(top + left, dx: 25pt, dy: 32pt, [$d$])
+      
+      place(top + left, dx: 195pt, dy: 123pt, [$x$])
+      place(top + left, dx: 37pt, dy: -2pt, [$y$])
+      
+      // Label A x B
+      place(top + left, dx: 95pt, dy: 60pt, [$A times B$])
+    }
+  )
+]
 
 
 == 17. Отображения и соответствия. Инъективное, сюръективное, биективное отображения. Обратное соответствие. Сечение соответствия.
