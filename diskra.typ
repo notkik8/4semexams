@@ -158,7 +158,7 @@ $ f(a_1, ..., a_(i-1), 0, a_(i+1), ..., a_n) = f(a_1, ..., a_(i-1), 1, a_(i+1), 
 
 Выражение, описывающее эту суперпозицию называется *формулой* над $F$, а само $F$ - *базисом*.
 
-$angle.l E, and, or, not angle.r$ — *булева алгебра*, а функции $and, or, not$ — *булевы операции*. \
+$chevron.l E, and, or, not chevron.r$ — *булева алгебра*, а функции $and, or, not$ — *булевы операции*. \
 $F_"б" = {and, or, not}$ — *булев базис*.
 
 *Свойства булевых операций:*
@@ -626,7 +626,7 @@ $ B subset A $
 
 *Операции над множествами:*
 + $A union B = {x: x in A "или" x in B}$ — объединение;
-+ $A sect B = {x: x in A "и" x in B}$ — пересечение;
++ $A inter B = {x: x in A "и" x in B}$ — пересечение;
 + $A \\ B = {x: x in A "и" x in.not B}$ — разность;
 + $overline(A) = {x: x in.not A} = U \\ A$ — дополнение;
 + $A triangle B = A plus.o B = {x: (x in A "и" x in.not B) "или" (x in.not A "и" x in B)}$ — симметрическая разность.
@@ -634,33 +634,33 @@ $ B subset A $
 *Свойства операций над множествами:*
 
 1. *Коммутативность:* \
-  $A union B = B union A, quad A sect B = B sect A, quad A triangle B = B triangle A$
+  $A union B = B union A, quad A inter B = B inter A, quad A triangle B = B triangle A$
 
 2. *Ассоциативность:* \
   $(A union B) union C = A union (B union C)$ \
-  $(A sect B) sect C = A sect (B sect C)$ \
+  $(A inter B) inter C = A inter (B inter C)$ \
   $(A triangle B) triangle C = A triangle (B triangle C)$
 
 3. *Дистрибутивность:* \
-  $(A sect B) union C = (A union C) sect (B union C)$ \
-  $(A union B) sect C = (A sect C) union (B sect C)$ \
-  $(A triangle B) sect C = (A sect C) triangle (B sect C)$
+  $(A inter B) union C = (A union C) inter (B union C)$ \
+  $(A union B) inter C = (A inter C) union (B inter C)$ \
+  $(A triangle B) inter C = (A inter C) triangle (B inter C)$
 
 4. *Поглощение:* \
-  $A union (A sect B) = A$ \
-  $A sect (A union B) = A$
+  $A union (A inter B) = A$ \
+  $A inter (A union B) = A$
 
 5. *Законы кратных дополнений (отрицаний):* \
   $overline(overline(A)) = A, quad overline(overline(overline(A))) = overline(A)$
 
 6. *Идемпотентность:* \
   $A union A union ... union A = A$ \
-  $A sect A sect ... sect A = A$ \
+  $A inter A inter ... inter A = A$ \
   $A triangle A triangle ... triangle A = cases(A "— если" n "нечетное", emptyset "— если" n "четное")$
 
 7. *Законы Де-Моргана:* \
-  $overline(A sect B) = overline(A) union overline(B)$ \
-  $overline(A union B) = overline(A) sect overline(B)$ \
+  $overline(A inter B) = overline(A) union overline(B)$ \
+  $overline(A union B) = overline(A) inter overline(B)$ \
   $overline(A triangle B) = A triangle B triangle U$
 
 8. *Остальные (частные случаи):*
@@ -669,9 +669,9 @@ $ B subset A $
     $A union U = U$ — объединение с универсальным множеством; \
     $A union overline(A) = U$ — объединение с дополнением.
   - *Для пересечения:* \
-    $A sect emptyset = emptyset$ — пересечение с пустым множеством; \
-    $A sect U = A$ — пересечение с универсальным множеством; \
-    $A sect overline(A) = emptyset$ — пересечение с дополнением.
+    $A inter emptyset = emptyset$ — пересечение с пустым множеством; \
+    $A inter U = A$ — пересечение с универсальным множеством; \
+    $A inter overline(A) = emptyset$ — пересечение с дополнением.
   - *Для симметрической разности:* \
     $A triangle emptyset = A$ — симметрическая разность с пустым множеством; \
     $A triangle U = overline(A)$ — симметрическая разность с универсальным множеством; \
@@ -1802,7 +1802,7 @@ _Пояснение:_ $2^A$ --- булеан множества $A$ (множе�
   $ rho circle sigma = {(x, y) : x in A, y in C, exists z in B : (x, z) in rho " и " (z, y) in sigma} $
 ]
 
-Для получения непустой композиции необходимо выполнение условия: $text("Res")(rho) sect text("Def")(sigma) != emptyset$
+Для получения непустой композиции необходимо выполнение условия: $text("Res")(rho) inter text("Def")(sigma) != emptyset$
 
 *Порядок построения композиции:*
 + найти сечение $rho(x)$ для всех $x in A$;
@@ -1818,13 +1818,13 @@ _Пояснение:_ $2^A$ --- булеан множества $A$ (множе�
   $ rho circle sigma = {(x, y) : x in A, y in D, exists z in B : (x, z) in rho " и " (z, y) in sigma} $
 ]
 
-Для того, чтобы $rho circle sigma != emptyset$, необходимо и достаточно: $text("Res")(rho) sect text("Def")(sigma) != emptyset$.
+Для того, чтобы $rho circle sigma != emptyset$, необходимо и достаточно: $text("Res")(rho) inter text("Def")(sigma) != emptyset$.
 
 *Свойства композиции соответствий:*
 + $(rho circle sigma) circle tau = rho circle (sigma circle tau)$ --- ассоциативность;
 + $rho circle (sigma union tau) = (rho circle sigma) union (rho circle tau)$ --- дистрибутивность;
 + $rho circle emptyset = emptyset circle rho = emptyset$;
-+ $rho circle (delta sect tau) subset.eq (rho circle delta) sect (rho circle tau)$;
++ $rho circle (delta inter tau) subset.eq (rho circle delta) inter (rho circle tau)$;
 + $rho circle "id"_A = "id"_A circle rho = rho$.
 
 #def("Композиция бинарных отношений")[
@@ -1923,26 +1923,537 @@ _Пояснение:_ $2^A$ --- булеан множества $A$ (множе�
   #align(center)[#image("dp/32.png", width: 55%)]
 ]
 
-
 #alert[
   Если граф - взвешенный, то матрица смежности превратится в матрицу весов.
 ]
 
-*2) Графический способ*
+#def("Матрица инцидентности (неограф)")[
+  Для неориентированного графа матрица инцидентности $H$ — это прямоугольная бинарная матрица размера $n times m$, где $n = |X|$ (число вершин), $m = |U|$ (число рёбер).
 
-*3) Описательный способ*
+  Правило заполнения:
+  $
+    h_(i j) = cases(
+      1 ", если вершина " x_i " инцидентна ребру " u_j,
+      0 ", иначе."
+    )
+  $
+]
+
+#align(center)[
+  #grid(
+    columns: (auto, auto),
+    gutter: 30pt,
+    align: center + horizon,
+    block(width: 200pt, height: 130pt, {
+      // Lines (behind circles)
+      place(top + left, dx: 40pt, dy: 30pt, line(start: (0pt, 0pt), end: (0pt, 80pt), stroke: 1.5pt + luma(100))) // u1
+      place(top + left, dx: 40pt, dy: 30pt, line(start: (0pt, 0pt), end: (140pt, 80pt), stroke: 1.5pt + luma(100))) // u2
+      place(top + left, dx: 40pt, dy: 110pt, line(start: (0pt, 0pt), end: (140pt, -80pt), stroke: 1.5pt + luma(100))) // u3
+      place(top + left, dx: 180pt, dy: 30pt, line(start: (0pt, 0pt), end: (0pt, 80pt), stroke: 1.5pt + luma(100))) // u4
+      place(top + left, dx: 40pt, dy: 110pt, line(start: (0pt, 0pt), end: (140pt, 0pt), stroke: 1.5pt + luma(100))) // u5
+
+      // Labels for lines (edges)
+      place(top + left, dx: 22pt, dy: 65pt, [$u_1$])
+      place(top + left, dx: 70pt, dy: 45pt, [$u_2$])
+      place(top + left, dx: 135pt, dy: 45pt, [$u_3$])
+      place(top + left, dx: 190pt, dy: 65pt, [$u_4$])
+      place(top + left, dx: 110pt, dy: 115pt, [$u_5$])
+
+      // Circles (vertices)
+      let node(x, y, txt) = {
+        place(top + left, dx: x - 12pt, dy: y - 12pt, circle(radius: 12pt, fill: white, stroke: 1.5pt + rgb("1c7ed6")))
+        place(top + left, dx: x - 12pt, dy: y - 12pt, block(width: 24pt, height: 24pt, align(
+          center + horizon,
+          [*#txt*],
+        )))
+      }
+
+      node(40pt, 30pt, [$x_1$])
+      node(40pt, 110pt, [$x_2$])
+      node(180pt, 30pt, [$x_3$])
+      node(180pt, 110pt, [$x_4$])
+    }),
+    table(
+      columns: (30pt, 25pt, 25pt, 25pt, 25pt, 25pt, 50pt),
+      align: center + horizon,
+      stroke: 0.5pt + luma(200),
+      fill: (col, row) => if row == 0 or col == 0 { rgb("f8f9fa") } else { none },
+      [], [*$u_1$*], [*$u_2$*], [*$u_3$*], [*$u_4$*], [*$u_5$*], [*$Sigma$*],
+      [*$x_1$*], [1], [1], [], [], [], [$2$],
+      [*$x_2$*], [1], [], [1], [], [1], [$3$],
+      [*$x_3$*], [], [], [1], [1], [], [$2$],
+      [*$x_4$*], [], [1], [], [1], [1], [$3$],
+      [*$Sigma$*], [2], [2], [2], [2], [2], [],
+    ),
+  )
+]
+
+#alert[
+  Сумма по $j$-му столбцу матрицы инцидентности неографа всегда равна $2$ (так как каждое ребро соединяет ровно две вершины). \
+  Сумма по $i$-й строке равна степени соответствующей вершины $rho(x_i)$.
+]
+
+#def("Матрица инцидентности (орграф)")[
+  Для ориентированного графа матрица инцидентности $H$ — это прямоугольная матрица размера $n times m$, элементы которой принимают значения ${-1, 0, 1}$.
+
+  Правило заполнения:
+  $
+    h_(i j) = cases(
+      -1 ", если вершина " x_i " является началом дуги " u_j,
+      1 ", если вершина " x_i " является концом дуги " u_j,
+      0 ", если вершина " x_i " не инцидентна дуге " u_j.
+    )
+  $
+]
+
+#align(center)[
+  #grid(
+    columns: (auto, auto),
+    gutter: 30pt,
+    align: center + horizon,
+    block(width: 200pt, height: 130pt, {
+      // Lines (behind circles)
+      place(top + left, dx: 40pt, dy: 30pt, line(start: (0pt, 0pt), end: (0pt, 80pt), stroke: 1.5pt + luma(100))) // u1
+      place(top + left, dx: 40pt, dy: 30pt, line(start: (0pt, 0pt), end: (140pt, 80pt), stroke: 1.5pt + luma(100))) // u2
+      place(top + left, dx: 40pt, dy: 110pt, line(start: (0pt, 0pt), end: (140pt, -80pt), stroke: 1.5pt + luma(100))) // u3
+      place(top + left, dx: 180pt, dy: 30pt, line(start: (0pt, 0pt), end: (0pt, 80pt), stroke: 1.5pt + luma(100))) // u4
+      place(top + left, dx: 40pt, dy: 110pt, line(start: (0pt, 0pt), end: (140pt, 0pt), stroke: 1.5pt + luma(100))) // u5
+
+      // Arrowheads for directed edges
+      place(top + left, dx: 40pt - 4.5pt, dy: 44pt, [#text(size: 9pt, fill: luma(80))[$arrow.t$]]) // u1 (from x2 to x1)
+      place(top + left, dx: 161pt, dy: 96pt, [#text(size: 9pt, fill: luma(80))[$arrow.br$]]) // u2 (from x1 to x4)
+      place(top + left, dx: 52pt, dy: 96pt, [#text(size: 9pt, fill: luma(80))[$arrow.bl$]]) // u3 (from x3 to x2)
+      place(top + left, dx: 180pt - 4.5pt, dy: 90pt, [#text(size: 9pt, fill: luma(80))[$arrow.b$]]) // u4 (from x3 to x4)
+      place(top + left, dx: 55pt, dy: 110pt - 6pt, [#text(size: 9pt, fill: luma(80))[$arrow.l$]]) // u5 (from x4 to x2)
+
+      // Labels for lines (edges)
+      place(top + left, dx: 22pt, dy: 65pt, [$u_1$])
+      place(top + left, dx: 70pt, dy: 45pt, [$u_2$])
+      place(top + left, dx: 135pt, dy: 45pt, [$u_3$])
+      place(top + left, dx: 190pt, dy: 65pt, [$u_4$])
+      place(top + left, dx: 110pt, dy: 115pt, [$u_5$])
+
+      // Circles (vertices)
+      let node(x, y, txt) = {
+        place(top + left, dx: x - 12pt, dy: y - 12pt, circle(radius: 12pt, fill: white, stroke: 1.5pt + rgb("1c7ed6")))
+        place(top + left, dx: x - 12pt, dy: y - 12pt, block(width: 24pt, height: 24pt, align(
+          center + horizon,
+          [*#txt*],
+        )))
+      }
+
+      node(40pt, 30pt, [$x_1$])
+      node(40pt, 110pt, [$x_2$])
+      node(180pt, 30pt, [$x_3$])
+      node(180pt, 110pt, [$x_4$])
+    }),
+    table(
+      columns: (30pt, 25pt, 25pt, 25pt, 25pt, 25pt, 35pt),
+      align: center + horizon,
+      stroke: 0.5pt + luma(200),
+      fill: (col, row) => if row == 0 or col == 0 { rgb("f8f9fa") } else { none },
+      [], [*$u_1$*], [*$u_2$*], [*$u_3$*], [*$u_4$*], [*$u_5$*], [*$Sigma$*],
+      [*$x_1$*], [1], [-1], [0], [0], [0], [$0$],
+      [*$x_2$*], [-1], [0], [1], [0], [1], [$1$],
+      [*$x_3$*], [0], [0], [-1], [-1], [0], [$-2$],
+      [*$x_4$*], [0], [1], [0], [1], [-1], [$1$],
+      [*$Sigma$*], [0], [0], [0], [0], [0], [],
+    ),
+  )
+]
+
+#alert[
+  - Сумма элементов любого столбца матрицы инцидентности орграфа всегда равна $0$.
+  - Число единиц ($1$) в строке вершины $x_i$ равно полустепени захода $p^+(x_i)$ (или $rho^-(x_i)$). Например, для вершины $x_2$: $p^+(x_2) = 2$ (в неё входят дуги $u_3$ и $u_5$).
+  - Число минус единиц ($-1$) в строке вершины $x_i$ равно полустепени исхода $p^-(x_i)$ (или $rho+(x_i)$). Например, для вершины $x_2$: $p^-(x_2) = 1$ (из неё выходит дуга $u_1$).
+]
+
+*2) Аналитический способ (через отображения)*
+
+Основан на теоретико-множественных отображениях. Граф задается с помощью прямых отображений $Gamma$ или обратных отображений $Gamma^(-1)$ первого порядка для каждой вершины.
+
+- *Прямое отображение* $Gamma_(x_i)$ сопоставляет вершине $x_i$ множество вершин, непосредственно достижимых из неё:
+  $ Gamma_(x_i) = {x_j in X : (x_i, x_j) in U} $
+- *Обратное отображение* $Gamma_(x_i)^(-1)$ сопоставляет вершине $x_i$ множество вершин, из которых исходят дуги в $x_i$:
+  $ Gamma_(x_i)^(-1) = {x_j in X : (x_j, x_i) in U} $
+
+*Пример:*
+Для ориентированного графа с вершинами $X = {x_1, x_2, x_3, x_4, x_5, x_6}$ и дугами $U = {(x_1, x_2), (x_2, x_3), (x_3, x_1), (x_4, x_2), (x_4, x_5), (x_5, x_6), (x_6, x_5)}$ отображения имеют вид:
+
+#align(center)[
+  #grid(
+    columns: (1.5fr, 1.5fr),
+    gutter: 40pt,
+    align: left + top,
+    [
+      *Прямые отображения:*
+      $
+        Gamma_(x_1) = {x_2} \
+        Gamma_(x_2) = {x_3} \
+        Gamma_(x_3) = {x_1} \
+        Gamma_(x_4) = {x_2, x_5} \
+        Gamma_(x_5) = {x_6} \
+        Gamma_(x_6) = {x_5}
+      $
+    ],
+    [
+      *Обратные отображения:*
+      $
+        Gamma_(x_1)^(-1) = {x_3} \
+        Gamma_(x_2)^(-1) = {x_1, x_4} \
+        Gamma_(x_3)^(-1) = {x_2} \
+        Gamma_(x_4)^(-1) = emptyset \
+        Gamma_(x_5)^(-1) = {x_4, x_6} \
+        Gamma_(x_6)^(-1) = {x_5}
+      $
+    ],
+  )
+]
+
+*3) Списковой способ (список списков / вектор адресов)*
+
+Этот способ является программной реализацией прямых (или обратных) отображений $Gamma$. Граф представляется в виде массива (вектора адресов) указателей на списки смежных вершин.
+
+- Массив состоит из $n = |X|$ элементов, где $i$-й элемент хранит адрес (указатель) на начало связного списка вершин, смежных с $x_i$.
+- Каждый узел списка содержит номер смежной вершины и указатель на следующий элемент (или "/" для обозначения конца списка `NULL`).
+
+#pagebreak()
+
+*Графическое представление списка списков для примера выше:*
+
+#align(center)[
+  #block(width: 320pt, height: 160pt, {
+    // 6 vertices: x1 to x6.
+    let draw_vertex_cell(i, label_txt) = {
+      let y = 5pt + i * 25pt
+      // Left part: vertex label
+      place(top + left, dx: 20pt, dy: y, rect(
+        width: 25pt,
+        height: 20pt,
+        stroke: 1pt + luma(100),
+        fill: rgb("e8f4f8"),
+        align(center + horizon, [*#label_txt*]),
+      ))
+      // Right part: pointer cell
+      place(top + left, dx: 45pt, dy: y, rect(width: 15pt, height: 20pt, stroke: 1pt + luma(100), align(
+        center + horizon,
+        [•],
+      )))
+    }
+
+    // Draw the array
+    for i in (0, 1, 2, 3, 4, 5) {
+      draw_vertex_cell(i, [$x_(#i+1)$])
+    }
+
+    // Helper for drawing a list node
+    let draw_list_node(x, y, val_txt, show_arrow_to_next: true) = {
+      place(top + left, dx: x, dy: y, rect(width: 25pt, height: 20pt, stroke: 1pt + luma(100), fill: white, align(
+        center + horizon,
+        [*#val_txt*],
+      )))
+      place(top + left, dx: x + 25pt, dy: y, rect(width: 15pt, height: 20pt, stroke: 1pt + luma(100), align(
+        center + horizon,
+        if show_arrow_to_next [•] else [/],
+      )))
+      if show_arrow_to_next {
+        place(top + left, dx: x + 40pt, dy: y + 10pt, line(start: (0pt, 0pt), end: (15pt, 0pt), stroke: 1pt + luma(80)))
+        place(top + left, dx: x + 51pt, dy: y + 6.5pt, [#text(size: 7.5pt, fill: luma(80))[$arrow.r$]])
+      }
+    }
+
+    // Helper for pointer arrow from array to first node
+    let draw_head_pointer(i, target_x) = {
+      let y = 5pt + i * 25pt + 10pt
+      place(top + left, dx: 52.5pt, dy: y, line(start: (0pt, 0pt), end: (17.5pt, 0pt), stroke: 1pt + luma(80)))
+      place(top + left, dx: 65pt, dy: y - 3.5pt, [#text(size: 7.5pt, fill: luma(80))[$arrow.r$]])
+    }
+
+    // Row 0 (x1): points to x2 -> NULL
+    draw_head_pointer(0, 70pt)
+    draw_list_node(70pt, 5pt, [$x_2$], show_arrow_to_next: false)
+
+    // Row 1 (x2): points to x3 -> NULL
+    draw_head_pointer(1, 70pt)
+    draw_list_node(70pt, 30pt, [$x_3$], show_arrow_to_next: false)
+
+    // Row 2 (x3): points to x1 -> NULL
+    draw_head_pointer(2, 70pt)
+    draw_list_node(70pt, 55pt, [$x_1$], show_arrow_to_next: false)
+
+    // Row 3 (x4): points to x2 -> x5 -> NULL
+    draw_head_pointer(3, 70pt)
+    draw_list_node(70pt, 80pt, [$x_2$], show_arrow_to_next: true)
+    draw_list_node(125pt, 80pt, [$x_5$], show_arrow_to_next: false)
+
+    // Row 4 (x5): points to x6 -> NULL
+    draw_head_pointer(4, 70pt)
+    draw_list_node(70pt, 105pt, [$x_6$], show_arrow_to_next: false)
+
+    // Row 5 (x6): points to x5 -> NULL
+    draw_head_pointer(5, 70pt)
+    draw_list_node(70pt, 130pt, [$x_5$], show_arrow_to_next: false)
+  })
+]
+
+*4) Массив пар смежных вершин (массив рёбер)*
+
+Граф задается в виде таблицы размерности $m times 2$ (где $m = |U|$ — количество рёбер/дуг), в которой каждая строка соответствует ребру графа и содержит номера граничных вершин.
+
+- Для ориентированного графа порядок вершин в паре важен: первый элемент — начало дуги ($x_s$), второй — конец ($x_e$).
+- В случае неориентированного графа порядок вершин в строке роли не играет.
+
+*Таблица массива рёбер для нашего примера:*
+
+#align(center)[
+  #table(
+    columns: (80pt, 100pt, 100pt),
+    align: center + horizon,
+    stroke: 0.5pt + luma(200),
+    fill: (col, row) => if row == 0 or col == 0 { rgb("f8f9fa") } else { none },
+    [*Дуга*], [*Начало ($x_s$)*], [*Конец ($x_e$)*],
+    [$u_1$], [$x_3$], [$x_1$],
+    [$u_2$], [$x_2$], [$x_3$],
+    [$u_3$], [$x_1$], [$x_2$],
+    [$u_4$], [$x_4$], [$x_2$],
+    [$u_5$], [$x_4$], [$x_5$],
+    [$u_6$], [$x_5$], [$x_6$],
+    [$u_7$], [$x_6$], [$x_5$],
+  )
+]
+
+*Сложность реализации:* данное представление занимает минимальный объём памяти $O(|U|)$, однако проверка смежности двух вершин требует полного обхода всего массива за время $O(|U|)$.
+
+*5) Графический способ*
+
+Граф представляется в виде рисунка (диаграммы) на плоскости или в пространстве, где вершины изображаются точками (или кружками), а ребра (дуги) — линиями (или стрелками), соединяющими соответствующие пары вершин.
+
+*6) Описательный способ*
+
+Способ задания графа с помощью вербального (текстового) описания множества вершин $X$ и отношений между ними (множества $U$). Например, "Вершины графа — это целые числа от 1 до 10; две вершины соединены ребром, если одна делится на другую без остатка".
 
 == 33. Части графа: подграфы и суграфы. Изоморфизм графов.
 
-_Ожидает заполнения._
+Пусть дан граф $G(X, U)$. Любой граф может быть разбит на составные части, представляющие собой графы меньшего размера. В теории графов выделяют несколько основных видов таких частей:
+
+#def("Часть графа")[
+  Граф $G_1(X_1, U_1)$ называется *частью графа* $G(X, U)$, если множество его вершин $X_1$ является подмножеством вершин $X$, а множество его ребер/дуг $U_1$ — подмножеством ребер/дуг $U$.
+
+  Формально:
+  $ X_1 subset.eq X " и " U_1 subset.eq U quad (G_1 subset.eq G) $
+]
+
+#def("Подграф")[
+  Часть графа $G_1(X_1, U_1)$ называется *подграфом* графа $G(X, U)$, если включение множеств строгое (то есть подграф не совпадает с самим графом целиком):
+
+  Формально:
+  $ X_1 subset X " и " U_1 subset U quad (G_1 subset G) $
+]
+
+#def("Суграф (частичный граф)")[
+  Часть графа $G_1(X_1, U_1)$ называется *суграфом* графа $G(X, U)$, если множество его вершин полностью совпадает с множеством вершин исходного графа, а множество ребер является его подмножеством:
+
+  Формально:
+  $ X_1 = X " и " U_1 subset U $
+
+  *Простыми словами:* суграф получается из исходного графа исключительно путем удаления некоторых ребер, при этом все вершины остаются на месте. Важным частным случаем является остовное дерево (остов) — остовный подграф связного графа, который не содержит циклов (является деревом).
+]
+
+#def("Порождённый подграф")[
+  Подграф $H(X_H, U_H)$ называется *порожденным* (или индуцированным) подмножеством вершин $Y subset X$, если его множество вершин совпадает с $Y$, и он содержит все те и только те ребра исходного графа, оба конца которых принадлежат множеству $Y$.
+
+  Формально:
+  $ X_H = Y, quad U_H = { {u, v} in U : u, v in Y } $
+
+  *Простыми словами:* порожденный подграф получается, если мы удаляем из графа часть вершин вместе со всеми инцидентными им ребрами.
+]
+
+#def("Изоморфизм графов")[
+  Графы $G_1(X_1, U_1)$ и $G_2(X_2, U_2)$ называются *изоморфными* (обозначается $G_1 tilde.eq G_2$), если существует взаимно-однозначное отображение (биекция) $phi: X_1 arrow.l.r X_2$, которое сохраняет отношение смежности вершин.
+
+  Это означает, что вершины $u$ и $v$ соединены ребром в графе $G_1$ тогда и только тогда, когда их образы $phi(u)$ и $phi(v)$ соединены ребром в графе $G_2$:
+  $ (u, v) in U_1 <=> (phi(u), phi(v)) in U_2 $
+
+  Для ориентированных графов изоморфизм дополнительно должен сохранять направление: если дуга ведет из $u$ в $v$, то и в изоморфном графе дуга должна вести из $phi(u)$ в $phi(v)$. Кроме того, должно сохраняться количество кратных ребер и петель у соответствующих вершин.
+]
+
+С точки зрения своих структурных свойств изоморфные графы совершенно одинаковы. Они несут одну и ту же информацию, а их отличия сводятся лишь к разным названиям (меткам) вершин или различному геометрическому изображению (рисунку) на плоскости.
+
+#thm("Изоморфизм графов есть отношение эквивалентности")[
+  Отношение изоморфизма графов обладает свойствами рефлексивности, симметричности и транзитивности.
+
+  *Доказательство:*
+  Рассмотрим свойства бинарного отношения изоморфизма:
+
+  1. *Рефлексивность:* $G tilde.eq G$. На множествах вершин $X$ и рёбер $U$ существует тождественное отображение (автобиекция) $f(x) = x$. Граф всегда изоморфен сам себе.
+  2. *Симметричность:* Если $G_1 tilde.eq G_2$, то $G_2 tilde.eq G_1$.
+    Пусть $f_1 : G_1 arrow.l.r G_2$ — изоморфизм (биекция). По свойствам биективных отображений, для любой биекции $f_1$ существует обратная биекция $f_1^(-1) : G_2 arrow.l.r G_1$, которая также сохраняет смежность:
+    $ (f_1(u), f_1(v)) in U_2 <=> (u, v) in U_1 $
+    Следовательно, $G_2$ изоморфен $G_1$.
+  3. *Транзитивность:* Если $G_1 tilde.eq G_2$ и $G_2 tilde.eq G_3$, то $G_1 tilde.eq G_3$.
+    Пусть заданы изоморфизмы $f_1 : G_1 arrow.l.r G_2$ и $f_2 : G_2 arrow.l.r G_3$. В силу того, что композиция двух биективных отображений также является биекцией, отображение $f_3 = f_2 circle f_1$ является биекцией $f_3 : G_1 arrow.l.r G_3$. Оно сохраняет отношение смежности:
+    $ (u, v) in U_1 <=> (f_1(u), f_1(v)) in U_2 <=> (f_2(f_1(u)), f_2(f_1(v))) in U_3 $
+    Следовательно, $G_1$ изоморфен $G_3$.
+]
+
+#alert[
+  *Следствие:* Множество всех графов разбивается на классы эквивалентности такие, что графы внутри каждого класса попарно изоморфны, а графы из разных классов — не изоморфны.
+]
+
+*Пример изоморфных графов:*
+Графы $G_1$ (в виде квадрата) и $G_2$ (в виде песочных часов) с 4 вершинами изоморфны. Зададим биекцию: $phi(1) = A, phi(2) = B, phi(3) = C, phi(4) = D$.
+
+#align(center)[
+  #grid(
+    columns: (auto, auto),
+    gutter: 50pt,
+    align: center + horizon,
+    block(width: 140pt, height: 110pt, {
+      // Title
+      place(top + left, dx: 35pt, dy: 0pt, [*Граф $G_1$*])
+      // Edges
+      place(top + left, dx: 30pt, dy: 30pt, line(start: (0pt, 0pt), end: (80pt, 0pt), stroke: 1.5pt + rgb("1c7ed6")))
+      place(top + left, dx: 30pt, dy: 30pt, line(start: (0pt, 0pt), end: (0pt, 60pt), stroke: 1.5pt + rgb("1c7ed6")))
+      place(top + left, dx: 110pt, dy: 30pt, line(start: (0pt, 0pt), end: (0pt, 60pt), stroke: 1.5pt + rgb("1c7ed6")))
+      place(top + left, dx: 30pt, dy: 90pt, line(start: (0pt, 0pt), end: (80pt, 0pt), stroke: 1.5pt + rgb("1c7ed6")))
+
+      // Nodes
+      let node(x, y, txt) = {
+        place(top + left, dx: x - 10pt, dy: y - 10pt, circle(radius: 10pt, fill: white, stroke: 1.5pt + luma(80)))
+        place(top + left, dx: x - 10pt, dy: y - 10pt, block(width: 20pt, height: 20pt, align(
+          center + horizon,
+          [*#txt*],
+        )))
+      }
+      node(30pt, 30pt, [1])
+      node(110pt, 30pt, [2])
+      node(30pt, 90pt, [4])
+      node(110pt, 90pt, [3])
+    }),
+    block(width: 140pt, height: 110pt, {
+      // Title
+      place(top + left, dx: 35pt, dy: 0pt, [*Граф $G_2$*])
+      // Edges
+      place(top + left, dx: 30pt, dy: 30pt, line(start: (0pt, 0pt), end: (80pt, 0pt), stroke: 1.5pt + rgb("d6336c")))
+      place(top + left, dx: 30pt, dy: 30pt, line(start: (0pt, 0pt), end: (80pt, 60pt), stroke: 1.5pt + rgb("d6336c")))
+      place(top + left, dx: 110pt, dy: 30pt, line(start: (0pt, 0pt), end: (-80pt, 60pt), stroke: 1.5pt + rgb("d6336c")))
+      place(top + left, dx: 30pt, dy: 90pt, line(start: (0pt, 0pt), end: (80pt, 0pt), stroke: 1.5pt + rgb("d6336c")))
+
+      // Nodes
+      let node(x, y, txt) = {
+        place(top + left, dx: x - 10pt, dy: y - 10pt, circle(radius: 10pt, fill: white, stroke: 1.5pt + luma(80)))
+        place(top + left, dx: x - 10pt, dy: y - 10pt, block(width: 20pt, height: 20pt, align(
+          center + horizon,
+          [*#txt*],
+        )))
+      }
+      node(30pt, 30pt, [A])
+      node(110pt, 30pt, [B])
+      node(30pt, 90pt, [C])
+      node(110pt, 90pt, [D])
+    }),
+  )
+]
+
+
 
 == 34. Теоретико-множественные операции на графах.
 
-_Ожидает заполнения._
+В теории графов определены различные операции над графами, позволяющие строить новые графы из уже существующих или модифицировать их. Рассмотрим основные из них.
+
+*1) Объединение графов*
+
+#def("Объединение графов")[
+  *Объединением* графов $G_1$ и $G_2$ называется граф $G(X, U) = G_1(X_1, U_1) union G_2(X_2, U_2)$ такой, что:
+  $ X = X_1 union X_2, quad U = U_1 union U_2 $
+]
+
+Таким образом, граф $G$ состоит из вершин и рёбер, входящих хотя бы *в один* из графов $G_1, G_2$.
+
+*2) Пересечение графов*
+
+#def("Пересечение графов")[
+  *Пересечением* графов $G_1$ и $G_2$ называется граф $G(X, U) = G_1(X_1, U_1) inter G_2(X_2, U_2)$ такой, что:
+  $ X = X_1 inter X_2, quad U = U_1 inter U_2 $
+]
+
+Таким образом, граф $G$ состоит из вершин и рёбер, *общих* для обоих графов $G_1, G_2$.
+
+*3) Дополнение графа*
+
+#def("Дополнительный граф")[
+  *Дополнительным графом* к графу $G(X, U)$ называется граф $overline(G)(X, overline(U))$, состоящий из *того же* множества вершин, что и граф $G$, и множества рёбер $overline(U) = U_n \\ U$, где $U_n$ — множество рёбер, соответствующее *полному* графу на множестве вершин $X$.
+]
+
+Таким образом, в дополнительном графе две вершины инцидентны одному и тому же ребру *в том и только том* случае, когда в исходном графе $G$ это ребро *отсутствует*.
+
+*4) Композиция графов*
+
+#def("Композиция графов")[
+  *Композицией* графов $G_1$ и $G_2$ называется граф $G(X, U) = G_1(X_1, U_1) circle G_2(X_2, U_2)$, в котором каждое ребро $(x_i, x_j)$ присутствует *тогда и только тогда*, когда в графе $G_1$ имеется ребро $(x_i, x_p) in U_1$, а в графе $G_2$ — ребро $(x_p, x_j) in U_2$.
+
+  При этом имеется в виду, что либо $X_1 = X_2 = X$, либо $X = X_1 union X_2$.
+]
+
+Таким образом, композиция графов — это композиция бинарных отношений, заданных на множествах рёбер графов.
+
+*5) Удаление вершины*
+
+#def("Удаление вершины")[
+  *Удалением вершины* $x$ из графа $G(X, U)$ называется операция, дающая граф $G - x$, в котором множество вершин есть $X \\ {x}$, а множество рёбер $U' = {u | u in U \\ E}$, где $E subset U$ и каждое $u_i in E$ инцидентно вершине $x$.
+]
+
+Таким образом, при удалении вершины из графа происходит удаление как самой этой вершины из множества вершин, так и всех инцидентных ей рёбер из множества рёбер.
+
+*6) Удаление ребра*
+
+#def("Удаление ребра")[
+  *Удалением ребра* $u$ из графа $G(X, U)$ называется операция, дающая граф $G - u$, в котором множество вершин совпадает с множеством вершин *исходного* графа, а множество рёбер есть $U \\ {u}$.
+]
+
+*7) Добавление ребра*
+
+#def("Добавление ребра")[
+  *Добавлением ребра* $u$ в граф $G(X, U)$ называется операция, дающая граф $G + u$, в котором множество вершин совпадает с множеством вершин *исходного* графа, а множество рёбер есть $U union {u}$.
+]
+
+*8) Стягивание ребра*
+
+#def("Стягивание ребра")[
+  *Стягиванием ребра* $u = (x_i, x_j)$ графа $G(X, U)$, где $u in U$, ${x_i, x_j} subset X$, называется операция, дающая граф с множеством рёбер $U \\ {u}$ при *отождествлении* вершин $x_i$ и $x_j$ одной новой вершине $x$, когда рёбра, инцидентные вершинам $x_i$ и $x_j$ в исходном графе, становятся инцидентными вершине $x$ полученного графа.
+
+  Обозначение операции: $G / u$.
+]
 
 == 35. Маршрут, цепь, цикл, путь, контур в графе. Прямое и обратное транзитивные замыкания.
 
-_Ожидает заполнения._
+#def("Маршрут")[
+  Маршрутом в графе называется чередующаяся последовательность вершин и рёбер
+]
+
+#def("Цепь")[
+
+]
+
+#def("Цикл")[
+
+]
+
+#def("Путь")[
+
+]
+
+#def("Контур")[
+
+]
+
+#def("Прямое транзитивное замыкание")[
+
+]
+
+#def("Обратное транзитивное замыкание")[
+
+]
 
 == 36. Понятие связности в графе. Простая и сильная связность. Компоненты связности. Алгоритм Мальгранжа разложения орграфа на компоненты сильной связности.
 
